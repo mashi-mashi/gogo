@@ -11,5 +11,11 @@ alias swagger="docker run --rm -it  --user $(id -u):$(id -g) -e GOPATH=$HOME/go:
 #### generate
 
 ```
-swagger generate server -t server/gen -f swagger/swagger.yaml
+swagger generate server -a factory -A factory -t server/gen -f swagger/swagger.yaml
+```
+
+#### run
+
+```
+go run server/gen/cmd/factory-server/main.go --host 0.0.0.0 --port 3000
 ```

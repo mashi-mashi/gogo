@@ -18,9 +18,6 @@ var (
 
 func init() {
 	SwaggerJSON = json.RawMessage([]byte(`{
-  "schemes": [
-    "https"
-  ],
   "swagger": "2.0",
   "info": {
     "title": "Go swagger samples",
@@ -37,7 +34,6 @@ func init() {
         "produces": [
           "application/json"
         ],
-        "operationId": "addPet",
         "responses": {
           "200": {
             "description": "successful operation",
@@ -71,9 +67,6 @@ func init() {
   }
 }`))
 	FlatSwaggerJSON = json.RawMessage([]byte(`{
-  "schemes": [
-    "https"
-  ],
   "swagger": "2.0",
   "info": {
     "title": "Go swagger samples",
@@ -90,7 +83,6 @@ func init() {
         "produces": [
           "application/json"
         ],
-        "operationId": "addPet",
         "responses": {
           "200": {
             "description": "successful operation",

@@ -10,16 +10,16 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/runtime/middleware"
 
-	"api-swagger/server/gen/restapi/gogo"
+	"gogo/server/gen/restapi/factory"
 )
 
-//go:generate swagger generate server --target ../../gen --name Gogo --spec ../../../swagger/swagger.yaml --api-package gogo --principal interface{}
+//go:generate swagger generate server --target ../../gen --name Factory --spec ../../../swagger/swagger.yaml --api-package factory --principal interface{}
 
-func configureFlags(api *gogo.GogoAPI) {
+func configureFlags(api *factory.FactoryAPI) {
 	// api.CommandLineOptionsGroups = []swag.CommandLineOptionsGroup{ ... }
 }
 
-func configureAPI(api *gogo.GogoAPI) http.Handler {
+func configureAPI(api *factory.FactoryAPI) http.Handler {
 	// configure the api here
 	api.ServeError = errors.ServeError
 
@@ -37,9 +37,9 @@ func configureAPI(api *gogo.GogoAPI) http.Handler {
 
 	api.JSONProducer = runtime.JSONProducer()
 
-	if api.AddPetHandler == nil {
-		api.AddPetHandler = gogo.AddPetHandlerFunc(func(params gogo.AddPetParams) middleware.Responder {
-			return middleware.NotImplemented("operation gogo.AddPet has not yet been implemented")
+	if api.GetHelloHandler == nil {
+		api.GetHelloHandler = factory.GetHelloHandlerFunc(func(params factory.GetHelloParams) middleware.Responder {
+			return middleware.NotImplemented("operation factory.GetHello has not yet been implemented")
 		})
 	}
 

@@ -1,16 +1,12 @@
----
 swagger: '2.0'
 info:
   version: '1.0.0'
   title: 'Go swagger samples'
 basePath: '/v1'
-schemes:
-  - 'https'
 paths:
   /hello:
     get:
       description: 'hello world'
-      operationId: 'addPet'
       consumes:
         - 'application/json'
       produces:

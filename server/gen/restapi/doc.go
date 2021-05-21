@@ -3,7 +3,7 @@
 // Package restapi Go swagger samples
 //
 //  Schemes:
-//    https
+//    http
 //  Host: localhost
 //  BasePath: /v1
 //  Version: 1.0.0
