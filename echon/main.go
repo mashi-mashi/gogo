@@ -3,6 +3,8 @@ package main
 import (
 	"net/http"
 
+	"echon/model/message"
+
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
@@ -19,6 +21,11 @@ func main() {
 	e.GET("/:param", func(c echo.Context) error {
 		param := c.Param("param")
 		return c.String(http.StatusOK, param)
+	})
+
+	e.GET("/api/v1/message", func(c echo.Context) error {
+		message := message.NewMessage()
+		return c.JSON(200, message)
 	})
 
 	e.Logger.Fatal(e.Start(":" + "3000"))
