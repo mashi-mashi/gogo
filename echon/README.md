@@ -19,7 +19,14 @@ gcloud builds submit --tag gcr.io/cacao-alpha/echo-api
 ### Cloud Run へ Deploy
 
 ```
-gcloud beta run deploy --image gcr.io/cacao-alpha/cloud-run-go-echo:tag1
-gcloud run deploy --image gcr.io/cacao-alpha/echo-api --platform managed
+gcloud run deploy --image gcr.io/cacao-alpha/echo-api --platform managed --region asia-northeast1
 
+```
+
+### 一発でやるやつ
+
+- サービス名も勝手につく
+
+```
+gcloud beta run deploy --platform managed --region asia-northeast1 --source .
 ```

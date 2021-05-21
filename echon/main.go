@@ -3,7 +3,8 @@ package main
 import (
 	"net/http"
 
-	"echon/model/message"
+	"echon/model"
+	"echon/utils"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -23,10 +24,10 @@ func main() {
 		return c.String(http.StatusOK, param)
 	})
 
-	e.GET("/api/v1/message", func(c echo.Context) error {
-		message := message.NewMessage()
-		return c.JSON(200, message)
+	e.GET("/api/v1/messages", func(c echo.Context) error {
+		message := model.NewMessage("type", "message")
+		return c.JSON(200, utils.ConventionalMarshaller{Value: message})
 	})
 
-	e.Logger.Fatal(e.Start(":" + "3000"))
+	e.Logger.Fatal(e.Start(":" + "8080"))
 }
