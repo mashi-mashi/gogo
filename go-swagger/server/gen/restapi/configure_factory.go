@@ -8,8 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
-	"github.com/go-openapi/runtime/middleware"
 
+	"gogo/server"
 	"gogo/server/gen/restapi/factory"
 )
 
@@ -37,11 +37,7 @@ func configureAPI(api *factory.FactoryAPI) http.Handler {
 
 	api.JSONProducer = runtime.JSONProducer()
 
-	if api.GetHelloHandler == nil {
-		api.GetHelloHandler = factory.GetHelloHandlerFunc(func(params factory.GetHelloParams) middleware.Responder {
-			return middleware.NotImplemented("operation factory.GetHello has not yet been implemented")
-		})
-	}
+	api.GetHelloHandler = factory.GetHelloHandlerFunc(server.GetHello)
 
 	api.PreServerShutdown = func() {}
 
