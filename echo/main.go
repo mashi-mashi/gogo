@@ -2,7 +2,6 @@ package main
 
 import (
 	"net/http"
-	"os"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -14,7 +13,7 @@ func main() {
 	e.Use(middleware.Recover())
 
 	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello, World!1111")
+		return c.String(http.StatusOK, "Hello, World!12")
 	})
 
 	e.GET("/:param", func(c echo.Context) error {
@@ -22,5 +21,5 @@ func main() {
 		return c.String(http.StatusOK, param)
 	})
 
-	e.Logger.Fatal(e.Start(":" + os.Getenv("PORT")))
+	e.Logger.Fatal(e.Start(":" + "3000"))
 }
