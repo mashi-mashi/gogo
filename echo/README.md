@@ -1,12 +1,25 @@
-#### build
+#### develop
+
+- hotreload のために air を利用する
+  - https://github.com/cosmtrek/air
 
 ```
-docker run -e PORT=1323 -p 1323:1323 --rm cloud-run-go-echo
+go get -u github.com/cosmtrek/air
+air
 ```
 
-#### run
+## deploy
+
+### Cloud Build を使用してコンテナ イメージをビルド
 
 ```
-// localhost:1323でたてる
-run -e PORT=1323 -p 1323:1323 --rm cloud-run-go-echo
+gcloud builds submit --tag gcr.io/cacao-alpha/echo-api
+```
+
+### Cloud Run へ Deploy
+
+```
+gcloud beta run deploy --image gcr.io/cacao-alpha/cloud-run-go-echo:tag1
+gcloud run deploy --image gcr.io/cacao-alpha/echo-api --platform managed
+
 ```
