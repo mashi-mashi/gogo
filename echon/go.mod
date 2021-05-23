@@ -10,6 +10,6 @@ require (
 	github.com/fatih/color v1.11.0 // indirect
 	github.com/labstack/echo/v4 v4.3.0
 	github.com/pelletier/go-toml v1.9.1 // indirect
-	golang.org/x/sys v0.0.0-20210521090106-6ca3eb03dfc2 // indirect
+	golang.org/x/sys v0.0.0-20210521203332-0cec03c779c1 // indirect
 	google.golang.org/api v0.47.0 // indirect
 )

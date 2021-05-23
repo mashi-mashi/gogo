@@ -15,11 +15,12 @@ func main() {
 	e := echo.New()
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
+	e.Use(middleware.CORS())
 
 	apiV1 := e.Group("/api/v1")
 
 	apiV1.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello, World!12")
+		return c.String(http.StatusOK, "Hello, World!")
 	}, custom.Auth())
 
 	apiV1.GET("/:param", func(c echo.Context) error {
