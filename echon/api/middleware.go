@@ -4,10 +4,9 @@ import (
 	"context"
 	"strings"
 
-	"github.com/labstack/echo/v4"
+	"echon/lib"
 
-	firebase "firebase.google.com/go"
-	"google.golang.org/api/option"
+	"github.com/labstack/echo/v4"
 )
 
 func Auth() echo.MiddlewareFunc {
@@ -16,12 +15,7 @@ func Auth() echo.MiddlewareFunc {
 
 func auth(next echo.HandlerFunc) echo.HandlerFunc {
 	return func(c echo.Context) error {
-		println(c)
-		opt := option.WithCredentialsFile("service-account.json")
-		app, err := firebase.NewApp(context.Background(), nil, opt)
-		if err != nil {
-			return err
-		}
+		app := lib.FirebaseApp(context.Background())
 
 		client, err := app.Auth(context.Background())
 		if err != nil {

@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	custom "echon/api"
+	"echon/lib"
 	"echon/model"
 	"echon/utils"
 
@@ -25,7 +26,11 @@ func main() {
 
 	apiV1.GET("/:param", func(c echo.Context) error {
 		param := c.Param("param")
-		return c.String(http.StatusOK, param)
+		addData := lib.AddDoc("test", map[string]interface{}{
+			"name":  param,
+			"param": param,
+		})
+		return c.JSON(http.StatusOK, utils.ConventionalMarshaller{Value: addData})
 	})
 
 	apiV1.GET("/messages", func(c echo.Context) error {
